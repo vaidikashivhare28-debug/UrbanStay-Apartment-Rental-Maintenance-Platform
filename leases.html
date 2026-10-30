@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>UrbanStay - Leases</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+<div class="navbar">
+    <div>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('units') }}">Units</a>
+        <a href="{{ url_for('tenants') }}">Tenants</a>
+        <a href="{{ url_for('leases') }}">Leases</a>
+        <a href="{{ url_for('payments') }}">Payments</a>
+        <a href="{{ url_for('maintenance') }}">Maintenance</a>
+        <a href="{{ url_for('reports') }}">Reports</a>
+        <a href="{{ url_for('settings') }}">Settings</a>
+    </div>
+    <div><a href="{{ url_for('logout') }}">Logout</a></div>
+</div>
+<div class="container">
+    <h1>Leases</h1>
+    {% with messages = get_flashed_messages() %}{% if messages %}{% for m in messages %}<div class="flash">{{ m }}</div>{% endfor %}{% endif %}{% endwith %}
+    <a href="{{ url_for('add_lease') }}" class="btn-add">+ Create New Lease</a>
+    <table>
+        <tr><th>Tenant</th><th>Unit</th><th>Start Date</th><th>End Date</th><th>Rent</th><th>Deposit</th></tr>
+        {% for l in leases %}
+        <tr>
+            <td>{{ l.tenant_name }}</td><td>{{ l.unit_number }}</td>
+            <td>{{ l.start_date }}</td><td>{{ l.end_date }}</td>
+            <td>₹{{ l.rent_amount }}</td><td>₹{{ l.deposit }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body></html>

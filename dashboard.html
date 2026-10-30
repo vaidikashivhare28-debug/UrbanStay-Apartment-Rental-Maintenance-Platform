@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UrbanStay - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('units') }}">Units</a>
+            <a href="{{ url_for('tenants') }}">Tenants</a>
+            <a href="{{ url_for('leases') }}">Leases</a>
+            <a href="{{ url_for('payments') }}">Payments</a>
+            <a href="{{ url_for('maintenance') }}">Maintenance</a>
+            <a href="{{ url_for('reports') }}">Reports</a>
+            <a href="{{ url_for('settings') }}">Settings</a>
+        </div>
+        <div>
+            <span style="color:white; margin-right:15px;">Hi, {{ session['name'] }}</span>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Dashboard</h1>
+        <div class="cards">
+            <div class="card"><h2>{{ total_units }}</h2><p>Total Units</p></div>
+            <div class="card"><h2>{{ occupied_units }}</h2><p>Occupied Units</p></div>
+            <div class="card"><h2>{{ pending_maintenance }}</h2><p>Pending Maintenance</p></div>
+            <div class="card"><h2>{{ overdue_payments }}</h2><p>Overdue Payments</p></div>
+        </div>
+    </div>
+</body>
+</html>

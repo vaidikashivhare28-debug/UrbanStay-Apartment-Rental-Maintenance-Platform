@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>UrbanStay - Reports</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+<div class="navbar">
+    <div>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('units') }}">Units</a>
+        <a href="{{ url_for('tenants') }}">Tenants</a>
+        <a href="{{ url_for('leases') }}">Leases</a>
+        <a href="{{ url_for('payments') }}">Payments</a>
+        <a href="{{ url_for('maintenance') }}">Maintenance</a>
+        <a href="{{ url_for('reports') }}">Reports</a>
+        <a href="{{ url_for('settings') }}">Settings</a>
+    </div>
+    <div><a href="{{ url_for('logout') }}">Logout</a></div>
+</div>
+<div class="container">
+    <h1>Reports & Analytics</h1>
+
+    <h3>Occupancy Status</h3>
+    <table>
+        <tr><th>Building</th><th>Unit</th><th>Status</th></tr>
+        {% for o in occupancy %}
+        <tr><td>{{ o.building }}</td><td>{{ o.unit_number }}</td><td>{{ o.status }}</td></tr>
+        {% endfor %}
+    </table>
+
+    <h3>Overdue Payments</h3>
+    <table>
+        <tr><th>Tenant</th><th>Amount</th><th>Due Date</th></tr>
+        {% for row in overdue %}
+        <tr><td>{{ row.name }}</td><td>₹{{ row.amount }}</td><td>{{ row.payment_date }}</td></tr>
+        {% endfor %}
+    </table>
+
+    <h3>Occupancy Rate per Building</h3>
+    <table>
+        <tr><th>Building</th><th>Total Units</th><th>Occupied</th></tr>
+        {% for row in occupancy_rate %}
+        <tr><td>{{ row.name }}</td><td>{{ row.total_units }}</td><td>{{ row.occupied_units }}</td></tr>
+        {% endfor %}
+    </table>
+</div>
+</body></html>

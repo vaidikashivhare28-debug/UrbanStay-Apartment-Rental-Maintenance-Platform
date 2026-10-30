@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Log Maintenance Request</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+<div class="navbar">
+    <div><a href="{{ url_for('dashboard') }}">Dashboard</a><a href="{{ url_for('maintenance') }}">Maintenance</a></div>
+    <div><a href="{{ url_for('logout') }}">Logout</a></div>
+</div>
+<div class="container">
+    <h1>Log New Maintenance Request</h1>
+    <form method="POST" style="max-width:400px;">
+        <label>Unit</label>
+        <select name="unit_id" required>
+            {% for u in units %}<option value="{{ u.unit_id }}">{{ u.unit_number }}</option>{% endfor %}
+        </select>
+        <label>Tenant</label>
+        <select name="tenant_id" required>
+            {% for t in tenants %}<option value="{{ t.tenant_id }}">{{ t.name }}</option>{% endfor %}
+        </select>
+        <label>Issue Type</label><input type="text" name="issue_type" placeholder="e.g. Leaking tap" required>
+        <label>Reported Date</label><input type="date" name="reported_date" required>
+        <button type="submit">Submit Request</button>
+    </form>
+</div>
+</body></html>

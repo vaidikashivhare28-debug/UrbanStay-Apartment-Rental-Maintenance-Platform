@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>UrbanStay - Settings</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+<div class="navbar">
+    <div>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('units') }}">Units</a>
+        <a href="{{ url_for('tenants') }}">Tenants</a>
+        <a href="{{ url_for('leases') }}">Leases</a>
+        <a href="{{ url_for('payments') }}">Payments</a>
+        <a href="{{ url_for('maintenance') }}">Maintenance</a>
+        <a href="{{ url_for('reports') }}">Reports</a>
+        <a href="{{ url_for('settings') }}">Settings</a>
+    </div>
+    <div><a href="{{ url_for('logout') }}">Logout</a></div>
+</div>
+<div class="container">
+    <h1>Settings (Admin only)</h1>
+    {% with messages = get_flashed_messages() %}{% if messages %}{% for m in messages %}<div class="flash">{{ m }}</div>{% endfor %}{% endif %}{% endwith %}
+
+    <h3>Amenities</h3>
+    <table>
+        <tr><th>Name</th></tr>
+        {% for a in amenities %}<tr><td>{{ a.name }}</td></tr>{% endfor %}
+    </table>
+    <form method="POST" style="max-width:300px; margin-top:15px;">
+        <input type="text" name="amenity_name" placeholder="New amenity name" required>
+        <button type="submit">Add Amenity</button>
+    </form>
+
+    <h3 style="margin-top:30px;">Maintenance Staff</h3>
+    <table>
+        <tr><th>Name</th><th>Specialization</th><th>Phone</th></tr>
+        {% for s in staff %}
+        <tr><td>{{ s.name }}</td><td>{{ s.specialization }}</td><td>{{ s.phone }}</td></tr>
+        {% endfor %}
+    </table>
+</div>
+</body></html>

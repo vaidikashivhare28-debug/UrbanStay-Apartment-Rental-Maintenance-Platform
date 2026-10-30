@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --ink: #16233A;
+    --ink-soft: #263A57;
+    --paper: #F6F4EE;
+    --paper-raised: #FFFFFF;
+    --brass: #A9822F;
+    --brass-soft: #E7D9B4;
+    --slate: #3B3F45;
+    --slate-light: #767B84;
+    --line: #E2DED2;
+    --success: #3F7D58;
+    --alert: #B4462E;
+    --alert-bg: #FBECE8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--slate);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 24px; }
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+    background: var(--ink);
+    padding: 0 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+.navbar > div:first-child { display: flex; align-items: center; gap: 26px; }
+.navbar > div:first-child a { margin-right: 26px; }
+.navbar > div:first-child a:last-child { margin-right: 0; }
+.navbar a {
+    color: #C9D2E0;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.15s ease;
+}
+.navbar a:hover { color: var(--brass-soft); }
+.navbar span { color: #8B96AA; font-size: 13px; }
+
+/* ---------- LOGIN ---------- */
+.login-box {
+    max-width: 400px;
+    margin: 90px auto;
+    background: var(--paper-raised);
+    padding: 44px 40px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    box-shadow: 0 20px 50px -20px rgba(22, 35, 58, 0.25);
+}
+.login-box h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 4px;
+}
+.login-box > p.tagline {
+    text-align: center;
+    color: var(--slate-light);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+}
+
+/* ---------- FORM ELEMENTS ---------- */
+label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--slate-light);
+    margin: 16px 0 6px;
+}
+input, select, textarea {
+    width: 100%;
+    padding: 11px 13px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    background: var(--paper-raised);
+    color: var(--slate);
+}
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--brass);
+    box-shadow: 0 0 0 3px rgba(169, 130, 47, 0.15);
+}
+button, input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 22px;
+    border-radius: 4px;
+    border: none;
+    background: var(--ink);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+button:hover, input[type="submit"]:hover { background: var(--ink-soft); }
+
+/* ---------- HERO / HOME PAGE ---------- */
+.hero-wrap {
+    min-height: 100vh;
+    background:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.04) 39px, rgba(255,255,255,0.04) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.04) 39px, rgba(255,255,255,0.04) 40px),
+        var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+.hero { max-width: 520px; text-align: center; }
+.hero .eyebrow {
+    color: var(--brass-soft);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+.hero h1 { color: #fff; font-size: 52px; line-height: 1.05; margin-bottom: 18px; }
+.hero p { color: #AEB8CC; font-size: 16px; line-height: 1.6; margin-bottom: 34px; }
+.hero a.btn-primary {
+    display: inline-block;
+    background: var(--brass);
+    color: var(--ink);
+    padding: 14px 36px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    transition: background 0.15s ease;
+}
+.hero a.btn-primary:hover { background: #C29A45; }
+
+/* ---------- DASHBOARD CARDS ---------- */
+.cards { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 24px; }
+.card {
+    background: var(--paper-raised);
+    padding: 24px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--brass);
+    flex: 1;
+    min-width: 200px;
+}
+.card h2 { margin: 0; color: var(--ink); font-size: 34px; }
+.card p {
+    margin: 6px 0 0;
+    color: var(--slate-light);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* ---------- TABLES ---------- */
+table { width: 100%; border-collapse: collapse; background: var(--paper-raised); margin-top: 20px; border: 1px solid var(--line); }
+th, td { padding: 13px 16px; text-align: left; border-bottom: 1px solid var(--line); font-size: 14px; }
+th {
+    background: var(--ink);
+    color: #C9D2E0;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #FBFAF6; }
+
+/* ---------- MISC ---------- */
+.btn-link { color: var(--brass); text-decoration: none; font-weight: 600; font-size: 13px; }
+.btn-link:hover { text-decoration: underline; }
+.btn-add {
+    display: inline-block;
+    background: var(--ink);
+    color: white;
+    padding: 11px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-top: 18px;
+}
+.btn-add:hover { background: var(--ink-soft); }
+.flash {
+    background: var(--alert-bg);
+    color: var(--alert);
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    border-left: 3px solid var(--alert);
+}

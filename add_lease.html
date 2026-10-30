@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Create Lease</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+<div class="navbar">
+    <div><a href="{{ url_for('dashboard') }}">Dashboard</a><a href="{{ url_for('leases') }}">Leases</a></div>
+    <div><a href="{{ url_for('logout') }}">Logout</a></div>
+</div>
+<div class="container">
+    <h1>Create New Lease</h1>
+    <form method="POST" style="max-width:400px;">
+        <label>Unit (vacant only)</label>
+        <select name="unit_id" required>
+            {% for u in units %}<option value="{{ u.unit_id }}">{{ u.unit_number }}</option>{% endfor %}
+        </select>
+
+        <label>Tenant</label>
+        <select name="tenant_id" required>
+            {% for t in tenants %}<option value="{{ t.tenant_id }}">{{ t.name }}</option>{% endfor %}
+        </select>
+
+        <label>Start Date</label><input type="date" name="start_date" required>
+        <label>End Date</label><input type="date" name="end_date" required>
+        <label>Monthly Rent</label><input type="number" step="0.01" name="rent_amount" required>
+        <label>Deposit</label><input type="number" step="0.01" name="deposit" required>
+
+        <button type="submit">Save</button>
+    </form>
+</div>
+</body></html>
